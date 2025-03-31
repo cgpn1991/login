@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="imagenes/2.png" type="image/x-icon">
+    <title>Login - Liceo Montessori</title>
+    <style>
+        :root {
+            --primary-color: #1b1c1b;
+            --secondary-color: #81C784;
+            --text-color: #ffffff;
+            --background-color: #f4f4f9;
+            --input-border-color: #ddd;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --accent-color: #f4f3f2;
+        }
+
+        body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url('imagenes/liceo.jpg') no-repeat center center fixed;
+    background-size: cover;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    position: relative;
+}
+
+
+        .login-container {
+            background: var(--background-color);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px var(--shadow-color);
+            width: 100%;
+            max-width: 360px;
+            padding: 30px;
+            text-align: center;
+            position: relative;
+        }
+
+        .login-container img {
+            width: 120px;
+            height: auto;
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 50%;
+            background: var(--accent-color);
+            padding: 10px;
+        }
+
+        .login-container h1 {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            margin-bottom: 8px;
+            display: block;
+            color: #333;
+        }
+
+        .input-group input {
+            width: 90%;
+            padding: 10px;
+            font-size: 14px;
+            border: 1px solid var(--input-border-color);
+            border-radius: 6px;
+            outline: none;
+            transition: all 0.3s ease;
+            margin-left: 5%;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .toggle-password {
+            margin-top: -28px;
+            margin-left: 85%;
+            cursor: pointer;
+            font-size: 14px;
+            color: #555;
+        }
+
+        .login-button {
+            background: var(--primary-color);
+            color: var(--text-color);
+            border: none;
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 15px;
+            cursor: pointer;
+            width: 90%;
+            margin-left: 5%;
+            transition: background 0.3s;
+        }
+
+        .login-button:hover {
+            background: #45A049;
+        }
+
+        .login-button:active {
+            transform: scale(0.98);
+        }
+
+        @media (max-width: 600px) {
+            .login-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="imagenes/1.png" alt="Logo del colegio">
+        <h1>LICEO MONTESSORI</h1>
+        <div class="input-group">
+            <label for="username"><strong>Usuario</strong></label>
+            <input type="text" id="username" placeholder="Ingresa tu usuario">
+        </div>
+        <div class="input-group">
+            <label for="password"><strong>Contraseña</strong></label>
+            <input type="password" id="password" placeholder="Ingresa tu contraseña">
+            <span class="toggle-password" onclick="togglePasswordVisibility()">👁️</span>
+        </div>
+        <button class="login-button" onclick="validateLogin()">Iniciar Sesión</button>
+        <p id="error-message" class="error-message" style="display: none;">Usuario o contraseña incorrectos</p>
+    </div>
+
+    <script>
+             const validUsers = [
+            { username: "miguel.garcía", password: "gatitalinda" },
+            { username: "jorge.medina", password: "superatletico" },
+            { username: "cesar.portillo", password: "portimedia" },
+            { username: "perla.sandoval", password: "montessori2025" },
+            { username: "evelyn.aguilar", password: "montessori2025" },
+            { username: "amada.carrillo", password: "montessori2025" },
+            { username: "rebeca.martinez", password: "montessori2025" },
+            { username: "gloria.deleon", password: "montessori2025" },
+            { username: "ninoskha.musica", password: "montessori2025" },
+            { username: "ivan.cobos", password: "montessori2025" },
+            { username: "jairo.muñoz", password: "montessori2025" },
+            { username: "georgina.sierra", password: "montessori2025" },
+            { username: "evelyn.luz", password: "montessori2025" },
+            { username: "patricia.avila", password: "montessori2025" },
+        ];
+        function togglePasswordVisibility() {
+            const passwordInput = document.getElementById('password');
+            const toggleButton = document.querySelector('.toggle-password');
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.textContent = '👁️';
+            }
+        }
+
+function validateLogin() {
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorMessage = document.getElementById('error-message');
+
+    const isValidUser = validUsers.some(user => user.username === username && user.password === password);
+
+    if (isValidUser) {
+        window.location.href = "https://notasingreso.created.app/";
+    } else {
+        errorMessage.style.display = 'block';
+    }
+}
+    </script>
+</body>
+</html>
